@@ -1,0 +1,10 @@
+Project 5: Capture The Flag (CTF) Challenge
+For CTF challenges, you can use tools like netcat, curl, or ssh depending on the type of challenge (network, binary exploitation, etc.).
+
+Example command for Bandit Wargame (level 1 to 2):
+
+
+# Using SSH to access Bandit Wargame level
+ssh bandit0@bandit.labs.overthewire.org -p 2220
+password: bandit0
+Follow the clues in the game and retrieve the flag for each level

